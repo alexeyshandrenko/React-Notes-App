@@ -1,0 +1,13 @@
+@import "./../../../styles/constants.scss";
+
+.dialog {
+  &__title {
+    color: $white-color !important;
+  }
+  &__description {
+    color: $base-color !important;
+  }
+  &__button {
+    color: $white-color !important;
+  }
+}

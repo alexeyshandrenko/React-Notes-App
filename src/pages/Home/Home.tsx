@@ -17,7 +17,9 @@ export const NotesDataContext = createContext<NotesDataContextProps>(
 
 const Home = () => {
   const [allNotesData, setAllNotesData] = useState<INote[]>([]);
+  const [findedNotesData, setFindedNotesData] = useState<INote[]>([]);
   const [selectedNote, setSelectedNote] = useState<INote>({} as INote);
+  const [activateSearch, setActivateSearch] = useState<boolean>(false);
 
   useEffect(() => {
     createCollectionsInIndexedDB();
@@ -29,6 +31,10 @@ const Home = () => {
     allNotesData,
     setSelectedNote,
     selectedNote,
+    findedNotesData,
+    setFindedNotesData,
+    activateSearch,
+    setActivateSearch,
   };
 
   return (

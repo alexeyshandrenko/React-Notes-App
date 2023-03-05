@@ -1,4 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+
+import ModalWindow from "../../ModalWindow/ModalWindow";
 
 import { NotesDataContext } from "../../../pages/Home/Home";
 
@@ -17,6 +19,8 @@ import { IconButton } from "@mui/material";
 const LeftTopBar = () => {
   const { setAllNotesData, selectedNote, setSelectedNote } =
     useContext(NotesDataContext);
+
+  const [modal, setModal] = useState<boolean>(false);
 
   const deleteNote = () => {
     NoteService.deleteNoteById(setAllNotesData, selectedNote.id);
@@ -48,12 +52,19 @@ const LeftTopBar = () => {
           className={styles.button}
           size="large"
           aria-label="garbage picture"
-          onClick={deleteNote}
+          onClick={() => setModal(true)}
           disabled={isEmpty(selectedNote)}
         >
           <DeleteOutlineIcon fontSize="inherit" />
         </IconButton>
       </div>
+      {modal && (
+        <ModalWindow
+          open={modal}
+          setOpen={setModal}
+          handleDelete={deleteNote}
+        />
+      )}
     </div>
   );
 };
