@@ -9,7 +9,6 @@
   &:hover {
     background: $note-background;
     border-radius: 5px;
-    // border: 0;
   }
   &_active {
     background: $note-background;
@@ -23,7 +22,6 @@
   &__description {
     display: flex;
     align-items: center;
-    // justify-content: ;
   }
   &__time {
     color: $white-color;

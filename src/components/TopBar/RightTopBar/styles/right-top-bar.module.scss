@@ -11,4 +11,7 @@
 
 .button {
   color: $base-color !important;
+  &:disabled {
+    color: $disabled-color !important;
+  }
 }

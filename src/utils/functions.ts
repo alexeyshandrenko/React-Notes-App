@@ -56,6 +56,20 @@ export const getSubstringText = (text: string, len: number): string => {
   return text.length < len ? text : `${text.substring(0, len)}...`;
 };
 
+export const findNotesByText = (text: string, notes: INote[]): INote[] => {
+  return text
+    ? notes.filter(
+        (note) =>
+          note.title.toLowerCase().includes(text.toLowerCase()) ||
+          note.text.toLowerCase().includes(text.toLowerCase())
+      )
+    : [];
+};
+
 export const isEmpty = (obj: any): boolean => {
   return Object.keys(obj).length === 0;
+};
+
+export const isEmptyArray = <T>(obj: Array<T>): boolean => {
+  return obj.length === 0;
 };

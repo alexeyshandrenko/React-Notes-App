@@ -1,8 +1,14 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
+
+import { findNotesByText, isEmpty } from "./../../../utils/functions";
+
+import { INote } from "../../../models/Note/INote";
 
 import { NotesDataContext } from "../../../pages/Home/Home";
 
 import styles from "./styles/right-top-bar.module.scss";
+
+import Search from "../../ui/search/Search";
 
 import NoteService from "../../../services/NoteService";
 
@@ -11,7 +17,31 @@ import { IconButton } from "@mui/material";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 
 const RightTopBar = () => {
-  const { setAllNotesData } = useContext(NotesDataContext);
+  const {
+    allNotesData,
+    setAllNotesData,
+    setFindedNotesData,
+    setActivateSearch,
+    selectedNote,
+    setSelectedNote,
+  } = useContext(NotesDataContext);
+
+  const [search, setSearch] = useState<string>("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isEmpty(selectedNote)) {
+      setSelectedNote({} as INote);
+    }
+    setSearch(e.target.value);
+    if (e.target.value) {
+      setActivateSearch(true);
+      const findedNotes = findNotesByText(e.target.value, allNotesData);
+      setFindedNotesData(findedNotes);
+    } else {
+      setActivateSearch(false);
+      NoteService.getNotes(setAllNotesData);
+    }
+  };
 
   const createNote = () => {
     NoteService.createNote(setAllNotesData);
@@ -23,12 +53,21 @@ const RightTopBar = () => {
         <IconButton
           className={styles.button}
           size="large"
-          color="primary"
           aria-label="create picture"
           onClick={createNote}
+          disabled={Boolean(search)}
         >
           <AddBoxOutlinedIcon fontSize="inherit" />
         </IconButton>
+      </div>
+      <div className="topbar__right">
+        <Search
+          type="text"
+          placeholder="Поиск"
+          name="search"
+          value={search}
+          onChange={handleChange}
+        />
       </div>
     </div>
   );
