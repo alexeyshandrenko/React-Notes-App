@@ -1,0 +1,8 @@
+@import "./../../../styles/constants.scss";
+
+.sidebar {
+  flex: 0 0 30%;
+  max-height: 100vh;
+  background: $sidebar-background;
+  border-right: 2px solid black;
+}

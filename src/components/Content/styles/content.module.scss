@@ -1,0 +1,7 @@
+@import "./../../../styles/constants.scss";
+
+.content {
+  flex: 0 0 70%;
+  background: $main-background;
+  max-height: 100vh;
+}

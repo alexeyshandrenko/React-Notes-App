@@ -1,0 +1,14 @@
+@import "./../../../../styles/constants.scss";
+
+.topbar {
+  background: $topbar-right-background;
+  display: flex;
+  align-items: center;
+  min-height: 10%;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.button {
+  color: $base-color !important;
+}
