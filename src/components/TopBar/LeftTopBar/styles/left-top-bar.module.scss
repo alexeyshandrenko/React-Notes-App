@@ -10,6 +10,12 @@
 
 .button {
   color: $base-color !important;
+  &_selected {
+    color: $white-color !important;
+  }
+  &:hover {
+    color: $white-color !important;
+  }
   &:disabled {
     color: $disabled-color !important;
   }

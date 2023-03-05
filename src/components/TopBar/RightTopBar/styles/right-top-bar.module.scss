@@ -11,6 +11,13 @@
 
 .button {
   color: $base-color !important;
+  margin-right: 60px !important;
+  &:last-child {
+    margin: 0 !important;
+  }
+  &:hover {
+    color: $white-color !important;
+  }
   &:disabled {
     color: $disabled-color !important;
   }

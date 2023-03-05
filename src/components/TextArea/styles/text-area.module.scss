@@ -22,6 +22,9 @@
     letter-spacing: 0em;
     height: fit-content !important;
     margin-bottom: 10px;
+    &_active {
+      font-style: italic;
+    }
   }
   &__textarea {
     width: 100%;
@@ -33,6 +36,9 @@
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: 0.00938em;
+    &_active {
+      font-style: italic;
+    }
     &::-webkit-scrollbar {
       display: none;
     }

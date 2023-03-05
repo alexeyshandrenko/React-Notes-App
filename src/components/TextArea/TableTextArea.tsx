@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 
-import { NotesDataContext } from "../../pages/Home/Home";
+import { NotesTableDataContext } from "../../pages/Table/HomeTable";
 
 import {
   getCurrentRoute,
@@ -16,8 +16,10 @@ import NoteService from "../../services/NoteService";
 import { Typography } from "@mui/material";
 import { INote } from "../../models/Note/INote";
 
-const TextArea = () => {
-  const { selectedNote, setAllNotesData } = useContext(NotesDataContext);
+const TableTextArea = () => {
+  const { selectedNote, setAllNotesData, activeStyleText } = useContext(
+    NotesTableDataContext
+  );
 
   const [note, setNote] = useState<Partial<INote>>({
     id: "",
@@ -60,14 +62,22 @@ const TextArea = () => {
             {getDescriptionData(selectedNote.time)}
           </Typography>
           <input
-            className={styles.area__title}
+            className={
+              !activeStyleText
+                ? styles.area__title
+                : `${styles.area__title} ${styles.area__title_active}`
+            }
             type="text"
             name="title"
             value={note.title}
             onChange={updateNote}
           />
           <textarea
-            className={styles.area__textarea}
+            className={
+              !activeStyleText
+                ? styles.area__textarea
+                : `${styles.area__textarea} ${styles.area__textarea_active}`
+            }
             name="text"
             value={note.text}
             onChange={updateNote}
@@ -78,4 +88,4 @@ const TextArea = () => {
   );
 };
 
-export default TextArea;
+export default TableTextArea;

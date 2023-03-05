@@ -10,6 +10,8 @@ import { Typography } from "@mui/material";
 
 import { getCurrentTime, getSubstringText } from "../../utils/functions";
 
+import { BASE_TEXT } from "../../utils/contants";
+
 const Note: FC<INote> = ({ id, title, time, text }) => {
   const { selectedNote, setSelectedNote } = useContext(NotesDataContext);
 
@@ -34,7 +36,7 @@ const Note: FC<INote> = ({ id, title, time, text }) => {
           {getCurrentTime(time)}
         </Typography>
         <Typography className={styles.note__text} variant="body2">
-          {getSubstringText(text, 40)}
+          {text ? getSubstringText(text, 40) : BASE_TEXT}
         </Typography>
       </div>
     </li>

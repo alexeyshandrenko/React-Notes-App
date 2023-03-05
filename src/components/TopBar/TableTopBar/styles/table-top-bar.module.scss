@@ -1,0 +1,37 @@
+@import "./../../../../styles/constants.scss";
+
+.topbar {
+  display: flex;
+  align-items: center;
+  height: 10%;
+  padding: 10px;
+  &__left {
+    flex: 1 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-right: 1px solid $note-border;
+  }
+  &__right {
+    flex: 1 0 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.button {
+  color: $base-color !important;
+  &_active {
+    color: $table-note-border !important;
+  }
+  &_selected {
+    color: $white-color !important;
+  }
+  &:hover {
+    color: $white-color !important;
+  }
+  &:disabled {
+    color: $disabled-color !important;
+  }
+}

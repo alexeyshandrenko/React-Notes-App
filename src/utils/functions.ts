@@ -66,6 +66,11 @@ export const findNotesByText = (text: string, notes: INote[]): INote[] => {
     : [];
 };
 
+export const getCurrentRoute = (pathname: string): string => {
+  const arr = pathname.substring(1, pathname.length).split("/");
+  return arr[arr.length - 1];
+};
+
 export const isEmpty = (obj: any): boolean => {
   return Object.keys(obj).length === 0;
 };
