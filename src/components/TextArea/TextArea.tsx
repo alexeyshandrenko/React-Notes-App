@@ -17,7 +17,8 @@ import { Typography } from "@mui/material";
 import { INote } from "../../models/Note/INote";
 
 const TextArea = () => {
-  const { selectedNote, setAllNotesData } = useContext(NotesDataContext);
+  const { selectedNote, setAllNotesData, activeStyleText } =
+    useContext(NotesDataContext);
 
   const [note, setNote] = useState<Partial<INote>>({
     id: "",
@@ -60,14 +61,22 @@ const TextArea = () => {
             {getDescriptionData(selectedNote.time)}
           </Typography>
           <input
-            className={styles.area__title}
+            className={
+              !activeStyleText
+                ? styles.area__title
+                : `${styles.area__title} ${styles.area__title_active}`
+            }
             type="text"
             name="title"
             value={note.title}
             onChange={updateNote}
           />
           <textarea
-            className={styles.area__textarea}
+            className={
+              !activeStyleText
+                ? styles.area__textarea
+                : `${styles.area__textarea} ${styles.area__textarea_active}`
+            }
             name="text"
             value={note.text}
             onChange={updateNote}

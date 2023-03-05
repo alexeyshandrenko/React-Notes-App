@@ -9,6 +9,8 @@ export interface NotesDataContextProps {
   setSelectedNote: React.Dispatch<React.SetStateAction<INote>>;
   activateSearch: boolean;
   setActivateSearch: React.Dispatch<React.SetStateAction<boolean>>;
+  activeStyleText: boolean;
+  setActiveStyleText: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface NotesTableDataContextProps {

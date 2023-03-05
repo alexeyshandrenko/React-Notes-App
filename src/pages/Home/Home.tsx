@@ -20,6 +20,7 @@ const Home = () => {
   const [findedNotesData, setFindedNotesData] = useState<INote[]>([]);
   const [selectedNote, setSelectedNote] = useState<INote>({} as INote);
   const [activateSearch, setActivateSearch] = useState<boolean>(false);
+  const [activeStyleText, setActiveStyleText] = useState<boolean>(false);
 
   useEffect(() => {
     createCollectionsInIndexedDB();
@@ -35,6 +36,8 @@ const Home = () => {
     setFindedNotesData,
     activateSearch,
     setActivateSearch,
+    activeStyleText,
+    setActiveStyleText,
   };
 
   return (

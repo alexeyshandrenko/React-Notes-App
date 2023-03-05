@@ -25,6 +25,8 @@ const RightTopBar = () => {
     setActivateSearch,
     selectedNote,
     setSelectedNote,
+    activeStyleText,
+    setActiveStyleText,
   } = useContext(NotesDataContext);
 
   const [search, setSearch] = useState<string>("");
@@ -61,9 +63,14 @@ const RightTopBar = () => {
           <AddBoxOutlinedIcon fontSize="inherit" />
         </IconButton>
         <IconButton
-          className={styles.button}
+          className={
+            !activeStyleText
+              ? styles.button
+              : `${styles.button} ${styles.button_active}`
+          }
           size="large"
           aria-label="style text picture"
+          onClick={() => setActiveStyleText((prev) => !prev)}
         >
           <TextFieldsIcon fontSize="inherit" />
         </IconButton>
