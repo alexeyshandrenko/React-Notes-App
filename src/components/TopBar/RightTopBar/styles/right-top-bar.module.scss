@@ -12,6 +12,9 @@
 .button {
   color: $base-color !important;
   margin-right: 60px !important;
+  &_active {
+    color: $table-note-border !important;
+  }
   &:last-child {
     margin: 0 !important;
   }
