@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import ModalWindow from "../../ModalWindow/ModalWindow";
 
 import { NotesDataContext } from "../../../pages/Home/Home";
@@ -17,6 +19,8 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { IconButton } from "@mui/material";
 
 const LeftTopBar = () => {
+  const navigate = useNavigate();
+
   const { setAllNotesData, selectedNote, setSelectedNote } =
     useContext(NotesDataContext);
 
@@ -31,10 +35,11 @@ const LeftTopBar = () => {
     <div className={styles.topbar}>
       <div className="topbar__left">
         <IconButton
-          className={styles.button}
+          className={`${styles.button} ${styles.button_selected}`}
           size="large"
           color="primary"
           aria-label="list picture"
+          onClick={() => navigate("/")}
         >
           <FormatListBulletedIcon fontSize="inherit" />
         </IconButton>
@@ -43,6 +48,7 @@ const LeftTopBar = () => {
           size="large"
           color="primary"
           aria-label="blocks picture"
+          onClick={() => navigate("/table")}
         >
           <GridViewOutlinedIcon fontSize="inherit" />
         </IconButton>

@@ -1,0 +1,35 @@
+@import "./../../../styles/constants.scss";
+
+.note {
+  &__block {
+    background: $main-background;
+    width: 250px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    color: $white-color;
+    cursor: pointer;
+    &_active {
+      outline: 1px solid $table-note-border;
+    }
+    &:hover {
+      outline: 1px solid $table-note-border;
+    }
+  }
+  &__title {
+    color: $white-color !important;
+    margin-bottom: 10px !important;
+  }
+  &__text {
+    color: $base-color !important;
+  }
+  &__subtitle {
+    text-align: center;
+    color: $white-color !important;
+    margin: 5px 0 !important;
+  }
+  &__time {
+    color: $base-color !important;
+    text-align: center;
+  }
+}

@@ -15,6 +15,7 @@ import NoteService from "../../../services/NoteService";
 import { IconButton } from "@mui/material";
 
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import TextFieldsIcon from "@mui/icons-material/TextFields";
 
 const RightTopBar = () => {
   const {
@@ -49,7 +50,7 @@ const RightTopBar = () => {
 
   return (
     <div className={styles.topbar}>
-      <div className="topbar__left">
+      <div className={styles.topbar__left}>
         <IconButton
           className={styles.button}
           size="large"
@@ -58,6 +59,13 @@ const RightTopBar = () => {
           disabled={Boolean(search)}
         >
           <AddBoxOutlinedIcon fontSize="inherit" />
+        </IconButton>
+        <IconButton
+          className={styles.button}
+          size="large"
+          aria-label="style text picture"
+        >
+          <TextFieldsIcon fontSize="inherit" />
         </IconButton>
       </div>
       <div className="topbar__right">

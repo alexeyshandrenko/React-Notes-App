@@ -2,7 +2,7 @@ import { idb } from "../db/indexeddb";
 
 import { generateUniqueId, sortByTimestamp } from "../utils/functions";
 
-import { BASE_TITLE, BASE_TEXT } from "../utils/contants";
+import { BASE_TITLE } from "../utils/contants";
 
 import { INote } from "../models/Note/INote";
 
@@ -41,7 +41,7 @@ export default class NoteService {
         title: BASE_TITLE,
         time: new Date(),
         timestamp: new Date().valueOf(),
-        text: BASE_TEXT,
+        text: "",
       });
       note.onsuccess = () => {
         tx.oncomplete = () => {

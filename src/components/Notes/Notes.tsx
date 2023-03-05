@@ -8,6 +8,8 @@ import { isEmptyArray } from "../../utils/functions";
 
 import Note from "../Note/Note";
 
+import { INote } from "../../models/Note/INote";
+
 const Notes = () => {
   const { allNotesData, findedNotesData, activateSearch } =
     useContext(NotesDataContext);
@@ -16,7 +18,7 @@ const Notes = () => {
     <ul className={styles.notes}>
       {!activateSearch &&
         !isEmptyArray(allNotesData) &&
-        allNotesData.map((note: any) => {
+        allNotesData.map((note: INote) => {
           const { id, title, time, text } = note;
           return (
             <Note key={id} id={id} title={title} time={time} text={text} />

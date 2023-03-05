@@ -8,6 +8,7 @@
   background: none;
   border: 1px solid $note-border;
   transition: 0.2s;
+  max-height: 33px;
   &:hover {
     border: 1px solid $base-color;
   }
