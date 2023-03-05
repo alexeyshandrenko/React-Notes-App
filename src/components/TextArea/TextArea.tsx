@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { NotesDataContext } from "../../pages/Home/Home";
 
@@ -18,14 +18,13 @@ import { INote } from "../../models/Note/INote";
 const TextArea = () => {
   const { selectedNote, setAllNotesData } = useContext(NotesDataContext);
 
-  const { id, title, text, time } = selectedNote || {};
-
   const [note, setNote] = useState<Partial<INote>>({
-    title,
-    text,
+    id: "",
+    title: "",
+    text: "",
   });
 
-  const updateNote = (e: any) => {
+  const updateNote = async (e: any) => {
     const { value, name } = e.target;
     setNote((prev) => {
       return {
@@ -34,17 +33,30 @@ const TextArea = () => {
       };
     });
     NoteService.updateNote(
-      { id, title: note.title, text: note.text },
+      {
+        id: note.id,
+        title: name === "title" ? value : note.title,
+        text: name === "text" ? value : note.text,
+      },
       setAllNotesData
     );
   };
+
+  useEffect(() => {
+    setNote((prev) => ({
+      ...prev,
+      id: selectedNote.id,
+      title: selectedNote.title,
+      text: selectedNote.text,
+    }));
+  }, [selectedNote]);
 
   return (
     <div className={styles.area}>
       {!isEmpty(selectedNote) && (
         <>
           <Typography className={styles.area__date} variant="body1">
-            {getDescriptionData(time)}
+            {getDescriptionData(selectedNote.time)}
           </Typography>
           <input
             className={styles.area__title}
