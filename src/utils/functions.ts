@@ -52,6 +52,10 @@ export const sortByTimestamp = (arr: INote[]) => {
   );
 };
 
+export const getSubstringText = (text: string, len: number): string => {
+  return text.length < len ? text : `${text.substring(0, len)}...`;
+};
+
 export const isEmpty = (obj: any): boolean => {
   return Object.keys(obj).length === 0;
 };
